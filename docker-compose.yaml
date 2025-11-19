@@ -7,7 +7,7 @@ networks:
 services:
   mongodb:
     image: surekhareddybana/mongo:v1
-    Container_Name: mongodb
+    container_name: mongodb
   catalogue:
     image: surekhareddybana/catalogue:v1
     container_name: catalogue
