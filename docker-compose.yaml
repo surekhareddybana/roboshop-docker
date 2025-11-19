@@ -1,0 +1,42 @@
+networks:
+  default:
+   driver: bridge
+   name: roboshop
+   external: true # i created network already using docker metwork create roboshop
+
+services:
+  mongodb:
+    image: surekhareddybana/mongo:v1
+    Container_Name: mongodb
+  catalogue:
+    image: surekhareddybana/catalogue:v1
+    container_name: catalogue
+    depends_on: 
+    - mongodb
+  redis:
+    image: redis:7.0
+    container_name: redis
+  user:
+    image: surekhareddybana/user
+    container_name: user
+    depends_on:
+    - redis
+    - mongodb
+  cart:
+    image: surekhareddybana/cart:v1
+    container_name: cart
+    depends_on:
+      - catalogue
+      - redis
+mysql:
+  image: surekhareddybana/mysql
+  container_name: mysql
+
+shipping:
+  image: surekhareddybana/shipping:v1
+  container_name: shipping
+  depends_on:
+  - mysql
+  - cart
+
+
