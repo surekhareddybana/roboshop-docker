@@ -32,12 +32,12 @@ mysql:
   image: surekhareddybana/mysql
   container_name: mysql
 
-shipping:
-  image: surekhareddybana/shipping:v1
-  container_name: shipping
-  depends_on:
-  - mysql
-  - cart
+#shipping:
+  #image: surekhareddybana/shipping:v1
+  #container_name: shipping
+ # depends_on:
+ # - mysql
+ # - cart
 rabbitmq:
   image: rabbitmq:3
   container_name: rabbitmq
